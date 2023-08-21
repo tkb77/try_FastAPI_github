@@ -1,0 +1,19 @@
+name: Try-ci
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Python Setup
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.10
+      - name: Run pytest install
+        run: pip install pytest
+      - name: Run pytest
+        run: python -m pytest .

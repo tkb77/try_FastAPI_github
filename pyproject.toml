@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "try-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["Yuta Takaba"]
+readme = "README.md"
+packages = [{include = "try_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["full"], version = "^0.101.0"}
+uvicorn = "^0.23.2"
+boto3 = "^1.28.23"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
