@@ -16,4 +16,5 @@ jobs:
       - name: Run pytest install
         run: pip install pytest
       - name: Run pytest
+        run: ls
         run: python -m pytest ./try_fastapi
