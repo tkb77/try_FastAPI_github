@@ -2,6 +2,8 @@ name: Try-ci
 
 on:
   push:
+    branches:
+      - master
 
 jobs:
   lint:
@@ -13,9 +15,13 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.11.4
-      - name: Run pytest install
-        run: pip install pytest
-      - name: Run pytest
+      - name: Install Poetry
         run: |
-          ls
-          python -m pytest ./try_fastapi
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+      - name: Add path for Poetry
+        run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+      - name: Install Dependencies
+        run: poetry install --no-interaction
+      - name: Run black
+        run: |
+          poetry run black .
